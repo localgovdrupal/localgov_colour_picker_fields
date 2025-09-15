@@ -1,0 +1,5 @@
+name: LocalGov Colour Picker Fields
+type: module
+description: Adds a colour picker to certain fields on LocalGov Base.
+package: LocalGov
+core_version_requirement: ^10 || ^11
