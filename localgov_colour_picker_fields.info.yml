@@ -1,5 +1,5 @@
 name: LocalGov Colour Picker Fields
 type: module
-description: Adds a colour picker to certain fields on LocalGov Base.
+description: Adds a colour picker fields functionality for LocalGov Drupal.
 package: LocalGov
 core_version_requirement: ^10 || ^11

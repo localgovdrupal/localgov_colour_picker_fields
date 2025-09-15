@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Colour Picker Fields module.
+ */
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function localgov_base_colour_picker_fields_form_system_theme_settings_alter(&$form, $form_state, $form_id) {
+
+  // Define the nested fields to apply the colour picker theme.
+  $fields = [
+    ['localgov_base_settings', 'theme_styles_fieldset', 'colour_accent'],
+  ];
+
+  foreach ($fields as $field_path) {
+    // Start with the root of the form array.
+    $field_ref = &$form;
+
+    // Traverse the nested array to locate the field.
+    foreach ($field_path as $key) {
+      if (isset($field_ref[$key])) {
+        $field_ref = &$field_ref[$key];
+      } else {
+        // Skip to the next field path if any part of the path does not exist.
+        continue 2;
+      }
+    }
+
+    // Apply the theme and attributes directly to the textfield.
+    if (isset($field_ref['#type']) && $field_ref['#type'] === 'textfield') {
+      $field_ref['#theme'] = 'colour_picker_fields';
+      $field_ref['#attributes']['class'][] = 'form-element';
+    }
+  }
+}
